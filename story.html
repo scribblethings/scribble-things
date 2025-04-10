@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Co-Write a Story</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Write a Story Together</h1>
+  <p>Fill in the blanks to co-create a gentle story with a human touch.</p>
+  <label for="name">Child's Name:</label>
+  <input type="text" id="name" placeholder="e.g. Elio"><br><br>
+
+  <label for="theme">Message or Theme:</label>
+  <input type="text" id="theme" placeholder="e.g. It's okay to be different"><br><br>
+
+  <label for="next">What should happen next?</label><br>
+  <textarea id="next" rows="3" cols="50" placeholder="e.g. The lion learned to sing by listening to the river..."></textarea><br><br>
+
+  <button onclick="generateStory()">Create My Story</button>
+
+  <div id="output"></div>
+  <nav><a href="index.html">Back to Home</a></nav>
+
+  <script>
+    function generateStory() {
+      const name = document.getElementById("name").value || "the child";
+      const theme = document.getElementById("theme").value || "Be kind to yourself.";
+      const next = document.getElementById("next").value || "And that was just the beginning.";
+
+      const starters = [
+        "In a field where the wind played lullabies, a young fox discovered a glowing book beneath an old willow tree.",
+        "High in the clouds, where birds told bedtime stories, a small bear looked down on the world and wondered.",
+        "On the edge of a quiet lake, a rabbit with shimmering ears found a letter sealed with moonlight."
+      ];
+
+      const random = starters[Math.floor(Math.random() * starters.length)];
+
+      const story = `${random} Their name was ${name}, and their heart was wide open to wonder. ${next} In the end, they remembered: "${theme}"`;
+
+      document.getElementById("output").innerText = story;
+    }
+  </script>
+</body>
+</html>
